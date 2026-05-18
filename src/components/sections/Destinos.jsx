@@ -91,8 +91,8 @@ export default function Destinos() {
   return (
     <section id="destinos" className="min-h-screen flex flex-col pt-24 pb-8 relative">
 
-      <StickerPop src={asset('assets/img/Stickers/Home Disney.svg')}          rotate={10}  delay={0}    className="top-[20%] left-[1%]  w-24 hidden lg:block" />
-      <StickerPop src={asset('assets/img/Stickers/Where Fans Come True.svg')} rotate={-4}  delay={0.15} className="top-[65%] right-[1%] w-28 hidden lg:block" />
+      <StickerPop src={asset('assets/img/Stickers/home-disney.svg')}          rotate={10}  delay={0}    className="top-[20%] left-[1%]  w-24 hidden lg:block" />
+      <StickerPop src={asset('assets/img/Stickers/where-fans-come-true.svg')} rotate={-4}  delay={0.15} className="top-[65%] right-[1%] w-28 hidden lg:block" />
 
       <div className="section-container flex-1 flex flex-col gap-3 min-h-0">
 

@@ -26,7 +26,7 @@ export default function HomePage() {
                    bg-brand-parchment pt-16 lg:pt-28 pb-section"
       >
         <StickerPop src={asset('assets/img/Stickers/Vero y Diego.svg')}         rotate={-8}  delay={0}    className="top-20 left-[3%]  w-24 lg:w-32 hidden lg:block" />
-        <StickerPop src={asset('assets/img/Stickers/Nuestro Tip Favorito.svg')} rotate={7}   delay={0.15} className="bottom-20 right-[3%] w-28 lg:w-36 hidden lg:block" />
+        <StickerPop src={asset('assets/img/Stickers/nuestro-tip-favorito.svg')} rotate={7}   delay={0.15} className="bottom-20 right-[3%] w-28 lg:w-36 hidden lg:block" />
 
         <div className="section-container">
           <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:items-stretch">
@@ -137,8 +137,8 @@ export default function HomePage() {
           OFERTAS — Parchment base, sin bloque contrastante
           ══════════════════════════════════════════════════════════════ */}
       <section id="ofertas" className="relative pb-section">
-        <StickerPop src={asset('assets/img/Stickers/Superpower.svg')}   rotate={-8} delay={0}    className="top-[18%] left-[3%]  w-24 lg:w-32 hidden lg:block" />
-        <StickerPop src={asset('assets/img/Stickers/Fan Número 1.svg')} rotate={6}  delay={0.15} className="top-8    right-[2%] w-24 lg:w-32 hidden lg:block" />
+        <StickerPop src={asset('assets/img/Stickers/superpower.svg')}   rotate={-8} delay={0}    className="top-[18%] left-[3%]  w-24 lg:w-32 hidden lg:block" />
+        <StickerPop src={asset('assets/img/Stickers/fan-numero-1.svg')} rotate={6}  delay={0.15} className="top-8    right-[2%] w-24 lg:w-32 hidden lg:block" />
         <div className="section-container text-center">
           <ScrollReveal>
             <p className="sticker mb-4">Tiempo limitado</p>

@@ -1,1 +1,1 @@
-export const asset = (path) => `${import.meta.env.BASE_URL}${path}?v=1`
+export const asset = (path) => `${import.meta.env.BASE_URL}${path}`

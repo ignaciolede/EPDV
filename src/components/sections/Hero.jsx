@@ -27,7 +27,7 @@ const STEPS = [
     yOffset: 0,
     cardWidth: 'w-44',
     swing: { deltas: [-2.5, 2, -1, 0.3, 0], times: [0, 0.25, 0.52, 0.76, 1], duration: 1.1 },
-    sticker: { src: '/assets/img/Stickers/Nuestro Tip Favorito.svg', rotate: -14, className: 'w-14 -right-5 -top-2' },
+    sticker: { src: asset('assets/img/Stickers/nuestro-tip-favorito.svg'), rotate: -14, className: 'w-14 -right-5 -top-2' },
   },
   {
     step: 'Paso 02',
@@ -42,7 +42,7 @@ const STEPS = [
     yOffset: 32,
     cardWidth: 'w-52',
     swing: { deltas: [-3, 2.2, -0.7, 0], times: [0, 0.20, 0.52, 1], duration: 0.85 },
-    sticker: { src: '/assets/img/Stickers/Where Fans Come True.svg', rotate: 12, className: 'w-14 -right-6 -top-2' },
+    sticker: { src: asset('assets/img/Stickers/where-fans-come-true.svg'), rotate: 12, className: 'w-14 -right-6 -top-2' },
   },
   {
     step: 'Paso 03',
@@ -57,7 +57,7 @@ const STEPS = [
     yOffset: -12,
     cardWidth: 'w-48',
     swing: { deltas: [2.8, -1.8, 0.6, -0.2, 0], times: [0, 0.22, 0.50, 0.74, 1], duration: 1.0 },
-    sticker: { src: '/assets/img/Stickers/Superpower.svg', rotate: -8, className: 'w-14 -right-6 -top-3' },
+    sticker: { src: asset('assets/img/Stickers/superpower.svg'), rotate: -8, className: 'w-14 -right-6 -top-3' },
   },
   {
     step: 'Paso 04',
@@ -72,7 +72,7 @@ const STEPS = [
     yOffset: 24,
     cardWidth: 'w-52',
     swing: { deltas: [-2.2, 1.4, -0.4, 0], times: [0, 0.28, 0.60, 1], duration: 0.9 },
-    sticker: { src: '/assets/img/Stickers/Home Disney.svg', rotate: 13, className: 'w-14 -right-5 -top-1' },
+    sticker: { src: asset('assets/img/Stickers/home-disney.svg'), rotate: 13, className: 'w-14 -right-5 -top-1' },
   },
   {
     step: 'Paso 05',
@@ -87,7 +87,7 @@ const STEPS = [
     yOffset: 8,
     cardWidth: 'w-44',
     swing: { deltas: [-2, 1.8, -1.2, 0.5, -0.2, 0], times: [0, 0.18, 0.38, 0.58, 0.78, 1], duration: 1.15 },
-    sticker: { src: '/assets/img/Stickers/Fan Número 1.svg', rotate: -11, className: 'w-14 -right-7 top-5' },
+    sticker: { src: asset('assets/img/Stickers/fan-numero-1.svg'), rotate: -11, className: 'w-14 -right-7 top-5' },
   },
 ]
 
