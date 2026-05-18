@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python --version)",
+      "Bash(python3 --version)",
+      "Bash(python \"C:\\\\Users\\\\USUARIO\\\\.claude\\\\skills\\\\ui-ux-pro-max\\\\scripts\\\\search.py\" \"travel agency tourism planning professional warm\" --design-system -p \"En Plan de Viajes\" -f markdown)",
+      "Bash(npm create *)",
+      "Bash(npm install *)",
+      "Bash(npx vite *)",
+      "Bash(grep -v \"\\\\.ai$\\\\|\\\\.pdf$\")",
+      "Bash(npm run *)",
+      "Bash(npx tsc *)"
+    ]
+  }
+}

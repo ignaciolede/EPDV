@@ -1,0 +1,237 @@
+/* ═══════════════════════════════════════════════════════════════════
+   EN PLAN DE VIAJES — Global Stylesheet
+   Orden: @font-face → Tailwind → Base → Utilities
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── 1. FUENTES CORPORATIVAS @font-face ───────────────────────────
+   Nota: los archivos .otf están en /assets/fonts/
+   Se mapean con font-display: swap para rendimiento óptimo.
+   ─────────────────────────────────────────────────────────────── */
+
+/* Roc Grotesk Condensed Bold — Títulos principales (MAYÚSCULAS) */
+@font-face {
+  font-family: 'Roc Grotesk Condensed';
+  src: url('/assets/fonts/Roc_Grotesk_Condensed_Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Roc Grotesk Bold — Subtítulos (MAYÚSCULAS) */
+@font-face {
+  font-family: 'Roc Grotesk';
+  src: url('/assets/fonts/Roc_Grotesk_Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Inter Regular — Cuerpo de texto */
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/fonts/Inter-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Inter Bold — Texto de énfasis */
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/fonts/Inter-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── 2. TAILWIND DIRECTIVES ────────────────────────────────────── */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── 3. BASE RESETS & DEFAULTS ─────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply font-body text-brand-blue-dark bg-white antialiased;
+    font-size: 1rem;
+    line-height: 1.65;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  /* Headings siempre usan Roc Grotesk Condensed Bold en MAYÚSCULAS */
+  h1, h2 {
+    @apply font-heading font-bold uppercase tracking-tight;
+  }
+
+  /* Subtítulos usan Roc Grotesk Bold en MAYÚSCULAS */
+  h3, h4 {
+    @apply font-subheading font-bold uppercase tracking-tight;
+  }
+
+  h5, h6 {
+    @apply font-body font-bold;
+  }
+
+  /* Imágenes responsive por defecto */
+  img, svg {
+    @apply max-w-full;
+  }
+
+  /* Focus ring accesible */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-blue ring-offset-2;
+  }
+
+  /* Scroll suave para anclas */
+  [id] {
+    scroll-margin-top: 5rem;
+  }
+}
+
+/* ── 4. COMPONENT LAYER ─────────────────────────────────────────── */
+@layer components {
+
+  /* ── Botones de Marca ── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+           px-6 py-3 rounded-full
+           bg-brand-blue text-white font-body font-bold text-sm
+           transition-all duration-250
+           hover:bg-brand-blue-dark hover:shadow-glow-blue
+           focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2
+           cursor-pointer select-none;
+  }
+
+  .btn-coral {
+    @apply inline-flex items-center justify-center gap-2
+           px-6 py-3 rounded-full
+           bg-brand-coral text-white font-body font-bold text-sm
+           transition-all duration-250
+           hover:opacity-90 hover:shadow-card-lg
+           cursor-pointer select-none;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2
+           px-6 py-3 rounded-full border-2 border-brand-blue
+           text-brand-blue font-body font-bold text-sm
+           transition-all duration-250
+           hover:bg-brand-blue hover:text-white
+           cursor-pointer select-none;
+  }
+
+  /* ── Cards ── */
+  .card {
+    @apply bg-white rounded-3xl shadow-card overflow-hidden
+           transition-shadow duration-250
+           hover:shadow-card-lg cursor-pointer;
+  }
+
+  /* ── Mapa como Marco (resource del manual) ──
+     Contenedor que usa la silueta del mapa como clip-path decorativo.
+     El SVG del mapa se usa como máscara sobre imágenes/bloques. */
+  .map-frame {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .map-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('/assets/img/Logos/SVG/MAPA AZUL.svg') center / contain no-repeat;
+    opacity: 0.06;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ── Hero animated gradient background ──
+     Gradiente que oscila entre los dos azules de marca.
+     background-size 400% permite el efecto de desplazamiento. */
+  .hero-animated-bg {
+    background: linear-gradient(-45deg, #1B2E4D, #006EFF, #0a1f3a, #003eb3);
+    background-size: 400% 400%;
+    animation: hero-gradient 14s ease infinite;
+  }
+
+  @keyframes hero-gradient {
+    0%   { background-position: 0%   50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0%   50%; }
+  }
+
+  /* ── Section container ── */
+  .section-container {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* ── Section heading ── */
+  .section-title {
+    @apply font-heading text-display-md text-brand-blue-dark uppercase;
+  }
+
+  .section-subtitle {
+    @apply font-subheading text-display-sm text-brand-blue uppercase;
+  }
+
+  /* ── Sticker / Destaque (manual §04) ── */
+  .sticker {
+    @apply inline-flex items-center gap-1.5
+           px-3 py-1 rounded-full text-xs font-body font-bold
+           bg-brand-coral text-white uppercase tracking-wider;
+  }
+
+  .sticker-blue {
+    @apply sticker bg-brand-blue;
+  }
+
+  .sticker-peach {
+    @apply sticker bg-brand-peach text-brand-blue-dark;
+  }
+}
+
+/* ── 5. UTILITY LAYER ───────────────────────────────────────────── */
+@layer utilities {
+
+  /* Animación con delay para stagger effect */
+  .anim-delay-100 { animation-delay: 100ms; }
+  .anim-delay-200 { animation-delay: 200ms; }
+  .anim-delay-300 { animation-delay: 300ms; }
+  .anim-delay-400 { animation-delay: 400ms; }
+
+  /* Respeta prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Text balance para headings */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Gradient text */
+  .text-gradient-blue {
+    @apply bg-gradient-brand bg-clip-text text-transparent;
+  }
+
+  /* Glassmorphism overlay */
+  .glass {
+    @apply bg-white/80 backdrop-blur-md border border-white/40;
+  }
+
+  .glass-dark {
+    @apply bg-brand-blue-dark/80 backdrop-blur-md border border-white/10;
+  }
+}

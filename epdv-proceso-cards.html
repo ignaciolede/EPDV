@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>En Plan de Viajes – ¿Cómo funciona?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --parchment: #F7F3EB;
+  --indigo:    #1B2E4D;
+  --blue:      #006EFF;
+  --coral:     #FF7345;
+  --peach:     #FFC299;
+  --frosted:   #A1E2F0;
+  --dark:      #373737;
+  --font-d:    'Barlow Condensed', sans-serif;
+  --font-s:    'Barlow', sans-serif;
+  --font-b:    'Inter', sans-serif;
+}
+
+body {
+  background: var(--parchment);
+  font-family: var(--font-b);
+  color: var(--dark);
+}
+
+/* ── FAN WRAPPER ── */
+.fan-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 40px 0 60px;
+}
+
+/* ── FAN CONTAINER ──
+   860px wide so 5 cards × 155px spacing + 248px card = ~860px
+── */
+.fan {
+  position: relative;
+  width: 860px;
+  height: 480px;
+  margin: 0 auto;
+}
+
+/* ── BASE CARD ── */
+.card {
+  position: absolute;
+  width: 248px;
+  height: 430px;
+  border-radius: 22px;
+  padding: 30px 22px 28px;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  transition: transform 0.32s cubic-bezier(0.34,1.4,0.64,1);
+  cursor: default;
+}
+
+/* ── CARD COLORS ── */
+.c1 { background: var(--indigo);  color: #fff; }
+.c2 { background: var(--blue);    color: #fff; }
+.c3 { background: var(--coral);   color: #fff; }
+.c4 { background: var(--frosted); color: var(--indigo); }
+.c5 { background: var(--peach);   color: var(--indigo); }
+
+/* ── FAN POSITIONS & ROTATIONS ──
+   Cards spaced 155px apart (100px overlap).
+   Left positions: 0, 155, 310, 465, 620.
+   Top offset creates the depth illusion.
+   Z-index increases left→right (right cards on top).
+── */
+.c1 { left:   0px; top: 42px; transform: rotate(-14deg); z-index: 1; }
+.c2 { left: 155px; top: 18px; transform: rotate(-7deg);  z-index: 2; }
+.c3 { left: 310px; top:  0px; transform: rotate(-1deg);  z-index: 3; }
+.c4 { left: 465px; top: 16px; transform: rotate( 6deg);  z-index: 4; }
+.c5 { left: 620px; top: 38px; transform: rotate(12deg);  z-index: 5; }
+
+/* Hover: keep same rotation, lift up */
+.c1:hover { transform: rotate(-14deg) translateY(-30px); z-index: 10; }
+.c2:hover { transform: rotate(-7deg)  translateY(-30px); z-index: 10; }
+.c3:hover { transform: rotate(-1deg)  translateY(-30px); z-index: 10; }
+.c4:hover { transform: rotate( 6deg)  translateY(-30px); z-index: 10; }
+.c5:hover { transform: rotate(12deg)  translateY(-30px); z-index: 10; }
+
+
+
+/* ── STEP NUM ── */
+.step-num {
+  font-family: var(--font-d);
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.42;
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+/* ── CARD TITLE ── */
+.card-title {
+  font-family: var(--font-d);
+  font-weight: 800;
+  font-size: 32px;
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  width: 100%;
+  height: 1px;
+  border: none;
+  background: rgba(255,255,255,0.3);
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+.c4 .divider,
+.c5 .divider { background: rgba(27,46,77,0.18); }
+
+/* ── LIST ── */
+.card-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  flex: 1;
+}
+
+.card-list li {
+  font-family: var(--font-b);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+  opacity: 0.9;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.card-list li::before {
+  content: '✦';
+  font-size: 9px;
+  flex-shrink: 0;
+  margin-top: 3px;
+  opacity: 0.65;
+}
+
+/* ── GHOST NUMBER ── */
+.ghost {
+  font-family: var(--font-d);
+  font-weight: 800;
+  font-size: 80px;
+  line-height: 1;
+  opacity: 0.06;
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  letter-spacing: -0.04em;
+  user-select: none;
+  pointer-events: none;
+}
+
+
+/* ── RESPONSIVE ── */
+@media (max-width: 980px) {
+  .fan-wrapper { overflow: hidden; padding: 20px 0 40px; }
+  .fan {
+    transform: scale(0.72);
+    transform-origin: top center;
+    margin-bottom: -136px;
+  }
+}
+
+@media (max-width: 600px) {
+  .fan-wrapper { overflow: visible; padding: 0; }
+  .fan {
+    transform: none;
+    position: static;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 0;
+  }
+  .card {
+    position: static;
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+    transform: none !important;
+    transition: none;
+  }
+  .ghost { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- FAN -->
+  <div class="fan-wrapper">
+    <div class="fan">
+
+      <article class="card c1">
+        <span class="step-num">Paso 01</span>
+        <h3 class="card-title">SOÑÁS<br>EL VIAJE</h3>
+        <hr class="divider">
+        <ul class="card-list">
+          <li>Completás nuestro formulario</li>
+          <li>Contás tu idea de viaje</li>
+          <li>Fechas, destino y ganas</li>
+        </ul>
+        <span class="ghost">01</span>
+      </article>
+
+      <article class="card c2">
+        <span class="step-num">Paso 02</span>
+        <h3 class="card-title">TE<br>CONTACTAMOS</h3>
+        <hr class="divider">
+        <ul class="card-list">
+          <li>Te damos la bienvenida</li>
+          <li>Coordinamos los pasos</li>
+          <li>Sin esperas que desaniman</li>
+        </ul>
+        <span class="ghost">02</span>
+      </article>
+
+      <article class="card c3">
+        <span class="step-num">Paso 03</span>
+        <h3 class="card-title">NOS<br>CONOCEMOS</h3>
+        <hr class="divider">
+        <ul class="card-list">
+          <li>Videollamada personal</li>
+          <li>Entendemos tu viaje ideal</li>
+          <li>Una charla, no un formulario</li>
+        </ul>
+        <span class="ghost">03</span>
+      </article>
+
+      <article class="card c4">
+        <span class="step-num">Paso 04</span>
+        <h3 class="card-title">ENCONTRAMOS<br>TU VIAJE</h3>
+        <hr class="divider">
+        <ul class="card-list">
+          <li>Mejores opciones y precios</li>
+          <li>Propuesta a tu medida</li>
+          <li>Sin sorpresas ni letra chica</li>
+        </ul>
+        <span class="ghost">04</span>
+      </article>
+
+      <article class="card c5">
+        <span class="step-num">Paso 05</span>
+        <h3 class="card-title">¡A<br>VIAJAR!</h3>
+        <hr class="divider">
+        <ul class="card-list">
+          <li>Todo coordinado para vos</li>
+          <li>Con vos durante el viaje</li>
+          <li>Compartís, nosotros respondemos</li>
+        </ul>
+        <span class="ghost">05</span>
+      </article>
+
+    </div>
+  </div>
+
+
+</body>
+</html>

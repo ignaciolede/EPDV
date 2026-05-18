@@ -1,0 +1,21 @@
+{
+  "typography": {
+    "headings": {
+      "family": "Roc Grotesk Condensed Bold",
+      "file": "assets/fonts/RocGrotesk-CondensedBold.otf",
+      "style": "uppercase"
+    },
+    "subtitles": {
+      "family": "Roc Grotesk Bold",
+      "file": "assets/fonts/RocGrotesk-Bold.otf",
+      "style": "uppercase"
+    },
+    "body": {
+      "family": "Inter",
+      "files": {
+        "regular": "assets/fonts/Inter-Regular.otf",
+        "bold": "assets/fonts/Inter-Bold.otf"
+      }
+    }
+  }
+}
