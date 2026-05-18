@@ -4,16 +4,16 @@ import { asset } from '../../utils/asset'
 
 /* ── Datos ───────────────────────────────────────────────────────────── */
 const DISNEY_ORLANDO = [
-  { nombre: 'Magic Kingdom',     logo: asset('assets/img/Parques/magic-kingdom.png'),     to: '/magic-kingdom'     },
-  { nombre: 'EPCOT',             logo: asset('assets/img/Parques/epcot.png'),             to: '/epcot'             },
-  { nombre: 'Animal Kingdom',    logo: asset('assets/img/Parques/animal-kingdom.png'),    to: '/animal-kingdom'    },
-  { nombre: 'Hollywood Studios', logo: asset('assets/img/Parques/hollywood-studios.png'), to: '/hollywood-studios' },
+  { nombre: 'Magic Kingdom',     logo: asset('assets/img/Parques/Magic Kingdom.png'),     to: '/magic-kingdom'     },
+  { nombre: 'EPCOT',             logo: asset('assets/img/Parques/Epcot.png'),             to: '/epcot'             },
+  { nombre: 'Animal Kingdom',    logo: asset('assets/img/Parques/Animal Kingdom.png'),    to: '/animal-kingdom'    },
+  { nombre: 'Hollywood Studios', logo: asset('assets/img/Parques/Hollywood Studios.png'), to: '/hollywood-studios' },
 ]
 
 const UNIVERSAL_ORLANDO = [
-  { nombre: 'Islands of Adventure', logo: asset('assets/img/Parques/islands-of-adventure.png'), to: '/islands-of-adventure' },
-  { nombre: 'Epic Universe',         logo: asset('assets/img/Parques/epic-universe.png'),         to: '/epic-universe'        },
-  { nombre: 'Universal Studios',     logo: asset('assets/img/Parques/universal-studios.png'),     to: '/universal-studios'    },
+  { nombre: 'Islands of Adventure', logo: asset('assets/img/Parques/Islands of Adventure.png'), to: '/islands-of-adventure' },
+  { nombre: 'Epic Universe',         logo: asset('assets/img/Parques/Epic Universe.png'),         to: '/epic-universe'        },
+  { nombre: 'Universal Studios',     logo: asset('assets/img/Parques/Universal Studios.png'),     to: '/universal-studios'    },
 ]
 
 const DISNEYLAND_CA = [
@@ -27,8 +27,8 @@ const DISNEYLAND_PARIS = [
 ]
 
 const OTROS = [
-  { nombre: 'Miami',    sub: 'Florida',        logo: asset('assets/img/Parques/miami.png'),    to: '/miami',    bg: 'bg-brand-coral'     },
-  { nombre: 'New York', sub: 'Estados Unidos', logo: asset('assets/img/Parques/new-york.png'), to: '/new-york', bg: 'bg-brand-blue-dark' },
+  { nombre: 'Miami',    sub: 'Florida',        logo: asset('assets/img/Parques/Miami.png'),    to: '/miami',    bg: 'bg-brand-coral'     },
+  { nombre: 'New York', sub: 'Estados Unidos', logo: asset('assets/img/Parques/New York.png'), to: '/new-york', bg: 'bg-brand-blue-dark' },
 ]
 
 const hideMissing = (e) => { e.currentTarget.style.display = 'none' }
