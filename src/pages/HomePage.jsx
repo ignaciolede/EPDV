@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { asset } from '../utils/asset'
 import Hero from '../components/sections/Hero'
 import Destinos from '../components/sections/Destinos'
 import ScrollReveal from '../components/ui/ScrollReveal'
@@ -24,8 +25,8 @@ export default function HomePage() {
         className="relative z-10 -mt-10 lg:-mt-24 rounded-t-[2rem]
                    bg-brand-parchment pt-16 lg:pt-28 pb-section"
       >
-        <StickerPop src="/assets/img/Stickers/Vero y Diego.svg"         rotate={-8}  delay={0}    className="top-20 left-[3%]  w-24 lg:w-32 hidden lg:block" />
-        <StickerPop src="/assets/img/Stickers/Nuestro Tip Favorito.svg" rotate={7}   delay={0.15} className="bottom-20 right-[3%] w-28 lg:w-36 hidden lg:block" />
+        <StickerPop src={asset('assets/img/Stickers/Vero y Diego.svg')}         rotate={-8}  delay={0}    className="top-20 left-[3%]  w-24 lg:w-32 hidden lg:block" />
+        <StickerPop src={asset('assets/img/Stickers/Nuestro Tip Favorito.svg')} rotate={7}   delay={0.15} className="bottom-20 right-[3%] w-28 lg:w-36 hidden lg:block" />
 
         <div className="section-container">
           <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:items-stretch">
@@ -51,7 +52,7 @@ export default function HomePage() {
                   </defs>
                   {/* ↓ Cambiá href para usar otra foto */}
                   <image
-                    href="/assets/img/vero-diego.png"
+                    href={asset('assets/img/vero-diego.png')}
                     x="0" y="0"
                     width="666.3" height="748"
                     preserveAspectRatio="xMidYMid slice"
@@ -96,8 +97,8 @@ export default function HomePage() {
           SERVICIOS — Parchment, sin cambio de fondo
           ══════════════════════════════════════════════════════════════ */}
       <section id="servicios" className="relative py-section">
-        <StickerPop src="/assets/img/Stickers/Logo Circular.svg" rotate={5}   delay={0}    className="top-[22%]  left-[3%]  w-20 lg:w-28 hidden lg:block" />
-        <StickerPop src="/assets/img/Stickers/Aprobado.svg"      rotate={-11} delay={0.15} className="bottom-10  right-[2%] w-24 lg:w-32 hidden lg:block" />
+        <StickerPop src={asset('assets/img/Stickers/Logo Circular.svg')} rotate={5}   delay={0}    className="top-[22%]  left-[3%]  w-20 lg:w-28 hidden lg:block" />
+        <StickerPop src={asset('assets/img/Stickers/Aprobado.svg')}      rotate={-11} delay={0.15} className="bottom-10  right-[2%] w-24 lg:w-32 hidden lg:block" />
         <div className="section-container text-center">
           <ScrollReveal>
             <p className="sticker mb-4">Lo que hacemos</p>
@@ -114,8 +115,8 @@ export default function HomePage() {
           NOVEDADES — Card blanca elevada, no bloque a pantalla completa
           ══════════════════════════════════════════════════════════════ */}
       <section id="novedades" className="relative pb-section">
-        <StickerPop src="/assets/img/Stickers/Veranos en Disney.svg"   rotate={9}   delay={0}    className="top-8     left-[2%]  w-24 lg:w-32 hidden lg:block" />
-        <StickerPop src="/assets/img/Stickers/Nos Vimos En Disney.svg" rotate={-7}  delay={0.15} className="bottom-12  right-[1%] w-24 lg:w-32 hidden lg:block" />
+        <StickerPop src={asset('assets/img/Stickers/Veranos en Disney.svg')}   rotate={9}   delay={0}    className="top-8     left-[2%]  w-24 lg:w-32 hidden lg:block" />
+        <StickerPop src={asset('assets/img/Stickers/Nos Vimos En Disney.svg')} rotate={-7}  delay={0.15} className="bottom-12  right-[1%] w-24 lg:w-32 hidden lg:block" />
         <div className="section-container">
           <ScrollReveal>
             <div className="bg-white rounded-3xl shadow-card px-8 py-16 text-center">
@@ -136,8 +137,8 @@ export default function HomePage() {
           OFERTAS — Parchment base, sin bloque contrastante
           ══════════════════════════════════════════════════════════════ */}
       <section id="ofertas" className="relative pb-section">
-        <StickerPop src="/assets/img/Stickers/Superpower.svg"   rotate={-8} delay={0}    className="top-[18%] left-[3%]  w-24 lg:w-32 hidden lg:block" />
-        <StickerPop src="/assets/img/Stickers/Fan Número 1.svg" rotate={6}  delay={0.15} className="top-8    right-[2%] w-24 lg:w-32 hidden lg:block" />
+        <StickerPop src={asset('assets/img/Stickers/Superpower.svg')}   rotate={-8} delay={0}    className="top-[18%] left-[3%]  w-24 lg:w-32 hidden lg:block" />
+        <StickerPop src={asset('assets/img/Stickers/Fan Número 1.svg')} rotate={6}  delay={0.15} className="top-8    right-[2%] w-24 lg:w-32 hidden lg:block" />
         <div className="section-container text-center">
           <ScrollReveal>
             <p className="sticker mb-4">Tiempo limitado</p>
@@ -164,7 +165,7 @@ export default function HomePage() {
           Separado del fondo parchment por márgenes y rounded-3xl.
           ══════════════════════════════════════════════════════════════ */}
       <section id="contacto" className="relative pb-10">
-        <StickerPop src="/assets/img/Stickers/Wow.svg" rotate={-6} delay={0.1} className="top-6 left-[2%] w-20 lg:w-28 hidden lg:block" />
+        <StickerPop src={asset('assets/img/Stickers/Wow.svg')} rotate={-6} delay={0.1} className="top-6 left-[2%] w-20 lg:w-28 hidden lg:block" />
         <div className="section-container">
           <ScrollReveal>
             <div className="bg-gradient-brand rounded-3xl px-8 py-16 text-center shadow-card-lg">

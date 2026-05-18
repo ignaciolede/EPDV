@@ -11,7 +11,7 @@
 /* Roc Grotesk Condensed Bold — Títulos principales (MAYÚSCULAS) */
 @font-face {
   font-family: 'Roc Grotesk Condensed';
-  src: url('/assets/fonts/Roc_Grotesk_Condensed_Bold.otf') format('opentype');
+  src: url('../assets/fonts/Roc_Grotesk_Condensed_Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -20,7 +20,7 @@
 /* Roc Grotesk Bold — Subtítulos (MAYÚSCULAS) */
 @font-face {
   font-family: 'Roc Grotesk';
-  src: url('/assets/fonts/Roc_Grotesk_Bold.otf') format('opentype');
+  src: url('../assets/fonts/Roc_Grotesk_Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -29,7 +29,7 @@
 /* Inter Regular — Cuerpo de texto */
 @font-face {
   font-family: 'Inter';
-  src: url('/assets/fonts/Inter-Regular.ttf') format('truetype');
+  src: url('../assets/fonts/Inter-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -38,7 +38,7 @@
 /* Inter Bold — Texto de énfasis */
 @font-face {
   font-family: 'Inter';
-  src: url('/assets/fonts/Inter-Bold.ttf') format('truetype');
+  src: url('../assets/fonts/Inter-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -148,7 +148,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: url('/assets/img/Logos/SVG/MAPA AZUL.svg') center / contain no-repeat;
+    background: url('../assets/img/Logos/SVG/MAPA AZUL.svg') center / contain no-repeat;
     opacity: 0.06;
     z-index: 0;
     pointer-events: none;

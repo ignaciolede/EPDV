@@ -1,33 +1,34 @@
 import { Link } from 'react-router-dom'
 import StickerPop from '../ui/StickerPop'
+import { asset } from '../../utils/asset'
 
 /* ── Datos ───────────────────────────────────────────────────────────── */
 const DISNEY_ORLANDO = [
-  { nombre: 'Magic Kingdom',     logo: '/assets/img/Parques/magic-kingdom.png',     to: '/magic-kingdom'     },
-  { nombre: 'EPCOT',             logo: '/assets/img/Parques/epcot.png',             to: '/epcot'             },
-  { nombre: 'Animal Kingdom',    logo: '/assets/img/Parques/animal-kingdom.png',    to: '/animal-kingdom'    },
-  { nombre: 'Hollywood Studios', logo: '/assets/img/Parques/hollywood-studios.png', to: '/hollywood-studios' },
+  { nombre: 'Magic Kingdom',     logo: asset('assets/img/Parques/magic-kingdom.png'),     to: '/magic-kingdom'     },
+  { nombre: 'EPCOT',             logo: asset('assets/img/Parques/epcot.png'),             to: '/epcot'             },
+  { nombre: 'Animal Kingdom',    logo: asset('assets/img/Parques/animal-kingdom.png'),    to: '/animal-kingdom'    },
+  { nombre: 'Hollywood Studios', logo: asset('assets/img/Parques/hollywood-studios.png'), to: '/hollywood-studios' },
 ]
 
 const UNIVERSAL_ORLANDO = [
-  { nombre: 'Islands of Adventure', logo: '/assets/img/Parques/islands-of-adventure.png', to: '/islands-of-adventure' },
-  { nombre: 'Epic Universe',         logo: '/assets/img/Parques/epic-universe.png',         to: '/epic-universe'        },
-  { nombre: 'Universal Studios',     logo: '/assets/img/Parques/universal-studios.png',     to: '/universal-studios'    },
+  { nombre: 'Islands of Adventure', logo: asset('assets/img/Parques/islands-of-adventure.png'), to: '/islands-of-adventure' },
+  { nombre: 'Epic Universe',         logo: asset('assets/img/Parques/epic-universe.png'),         to: '/epic-universe'        },
+  { nombre: 'Universal Studios',     logo: asset('assets/img/Parques/universal-studios.png'),     to: '/universal-studios'    },
 ]
 
 const DISNEYLAND_CA = [
-  { nombre: 'Disneyland Park',           logo: '/assets/img/Parques/disneyland-park.png',      to: '/disneyland-park'      },
-  { nombre: 'California Adventure Park', logo: '/assets/img/Parques/california-adventure.png', to: '/california-adventure' },
+  { nombre: 'Disneyland Park',           logo: asset('assets/img/Parques/disneyland-park.png'),      to: '/disneyland-park'      },
+  { nombre: 'California Adventure Park', logo: asset('assets/img/Parques/california-adventure.png'), to: '/california-adventure' },
 ]
 
 const DISNEYLAND_PARIS = [
-  { nombre: 'Disneyland Park',        logo: '/assets/img/Parques/disneyland-paris.png',       to: '/disneyland-paris'       },
-  { nombre: 'Disney Adventure World', logo: '/assets/img/Parques/disney-adventure-world.png', to: '/disney-adventure-world' },
+  { nombre: 'Disneyland Park',        logo: asset('assets/img/Parques/disneyland-paris.png'),       to: '/disneyland-paris'       },
+  { nombre: 'Disney Adventure World', logo: asset('assets/img/Parques/disney-adventure-world.png'), to: '/disney-adventure-world' },
 ]
 
 const OTROS = [
-  { nombre: 'Miami',    sub: 'Florida',        logo: '/assets/img/Parques/miami.png',    to: '/miami',    bg: 'bg-brand-coral'     },
-  { nombre: 'New York', sub: 'Estados Unidos', logo: '/assets/img/Parques/new-york.png', to: '/new-york', bg: 'bg-brand-blue-dark' },
+  { nombre: 'Miami',    sub: 'Florida',        logo: asset('assets/img/Parques/miami.png'),    to: '/miami',    bg: 'bg-brand-coral'     },
+  { nombre: 'New York', sub: 'Estados Unidos', logo: asset('assets/img/Parques/new-york.png'), to: '/new-york', bg: 'bg-brand-blue-dark' },
 ]
 
 const hideMissing = (e) => { e.currentTarget.style.display = 'none' }
@@ -90,8 +91,8 @@ export default function Destinos() {
   return (
     <section id="destinos" className="min-h-screen flex flex-col pt-24 pb-8 relative">
 
-      <StickerPop src="/assets/img/Stickers/Home Disney.svg"          rotate={10}  delay={0}    className="top-[20%] left-[1%]  w-24 hidden lg:block" />
-      <StickerPop src="/assets/img/Stickers/Where Fans Come True.svg" rotate={-4}  delay={0.15} className="top-[65%] right-[1%] w-28 hidden lg:block" />
+      <StickerPop src={asset('assets/img/Stickers/Home Disney.svg')}          rotate={10}  delay={0}    className="top-[20%] left-[1%]  w-24 hidden lg:block" />
+      <StickerPop src={asset('assets/img/Stickers/Where Fans Come True.svg')} rotate={-4}  delay={0.15} className="top-[65%] right-[1%] w-28 hidden lg:block" />
 
       <div className="section-container flex-1 flex flex-col gap-3 min-h-0">
 
@@ -145,7 +146,7 @@ export default function Destinos() {
               <BlockLabel text="Universal Studios · Hollywood" />
               <div className="flex-1 flex items-center justify-center gap-3 px-4 pb-4 min-h-0">
                 <img
-                  src="/assets/img/Parques/universal-hollywood.png"
+                  src={asset('assets/img/Parques/universal-hollywood.png')}
                   alt="Universal Studios Hollywood"
                   onError={hideMissing}
                   className="h-9 w-auto object-contain shrink-0"
@@ -178,7 +179,7 @@ export default function Destinos() {
                          hover:shadow-card-lg transition-all duration-300"
             >
               <img
-                src="/assets/img/Logos/SVG/MAPA AZUL.svg"
+                src={asset('assets/img/Logos/SVG/MAPA AZUL.svg')}
                 aria-hidden="true"
                 className="absolute right-20 top-1/2 -translate-y-1/2 h-36 opacity-[0.07] pointer-events-none select-none"
               />

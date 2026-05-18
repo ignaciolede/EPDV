@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom'
+import { asset } from '../utils/asset'
 
 export default function NotFoundPage() {
   return (
     <div className="min-h-screen bg-brand-parchment flex items-center justify-center px-4">
       <div className="text-center">
         <img
-          src="/assets/img/Logos/SVG/MAPA AZUL.svg"
+          src={asset('assets/img/Logos/SVG/MAPA AZUL.svg')}
           alt=""
           aria-hidden="true"
           className="h-24 w-24 mx-auto opacity-20 mb-8"

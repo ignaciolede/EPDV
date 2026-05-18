@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom'
+import { asset } from '../../utils/asset'
 
 /* ── Íconos SVG inline ──────────────────────────────────────────── */
 const MenuIcon = () => (
@@ -186,7 +187,7 @@ export default function Navbar() {
             className="shrink-0 lg:ml-12 cursor-pointer"
           >
             <img
-              src="/assets/img/Logos/SVG/EPDV AZUL.svg"
+              src={asset('assets/img/Logos/SVG/EPDV AZUL.svg')}
               alt="En Plan de Viajes"
               width={2014}
               height={950}
@@ -342,7 +343,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between px-6 py-5 border-b border-brand-parchment">
             <Link to="/" onClick={closeAll} aria-label="En Plan de Viajes">
               <img
-                src="/assets/img/Logos/SVG/EPDV AZUL.svg"
+                src={asset('assets/img/Logos/SVG/EPDV AZUL.svg')}
                 alt="En Plan de Viajes"
                 width={2014}
                 height={950}

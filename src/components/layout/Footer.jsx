@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { asset } from '../../utils/asset'
 
 const FOOTER_LINKS = [
   { label: 'Nosotros',  href: '/#nosotros'  },
@@ -29,7 +30,7 @@ export default function Footer() {
           <div>
             <Link to="/" aria-label="En Plan de Viajes — Inicio">
               <img
-                src="/assets/img/Logos/SVG/EPDV HORIZONTAL BLANCO.svg"
+                src={asset('assets/img/Logos/SVG/EPDV HORIZONTAL BLANCO.svg')}
                 alt="En Plan de Viajes"
                 width={160}
                 height={40}
@@ -99,7 +100,7 @@ export default function Footer() {
             © {new Date().getFullYear()} En Plan de Viajes. Todos los derechos reservados.
           </p>
           <img
-            src="/assets/img/Logos/SVG/EPDV CIRCULAR BLANCO.svg"
+            src={asset('assets/img/Logos/SVG/EPDV CIRCULAR BLANCO.svg')}
             alt=""
             aria-hidden="true"
             className="h-8 w-8 object-contain opacity-30"

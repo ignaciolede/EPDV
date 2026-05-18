@@ -1,14 +1,15 @@
 import { motion, useAnimation } from 'framer-motion'
 import { useState, useEffect, useRef } from 'react'
+import { asset } from '../../utils/asset'
 
 /* ── Stickers decorativos del fondo ───────────────────────────────── */
 const STICKERS = [
-  { src: '/assets/img/Stickers/Modo Avion.svg',         rotate: -9, className: 'top-[7%]     left-[3%]  w-32 lg:w-44', hideOnMobile: false },
-  { src: '/assets/img/Stickers/Wow.svg',                rotate:  7, className: 'top-[4%]     right-[4%] w-36 lg:w-52', hideOnMobile: false },
-  { src: '/assets/img/Stickers/Viajo Luego Existo.svg', rotate: -6, className: 'top-[55%]    left-[1%]  w-28 lg:w-40', hideOnMobile: true  },
-  { src: '/assets/img/Stickers/I Love Magic.svg',       rotate: 10, className: 'top-[70%]    right-[1%] w-28 lg:w-36', hideOnMobile: true  },
-  { src: '/assets/img/Stickers/Hacks.svg',              rotate: 12, className: 'bottom-[10%] left-[5%]  w-24 lg:w-32', hideOnMobile: true  },
-  { src: '/assets/img/Stickers/No Muggles Allowed.svg', rotate: -5, className: 'bottom-[8%]  right-[5%] w-28 lg:w-36', hideOnMobile: true  },
+  { src: asset('assets/img/Stickers/Modo Avion.svg'),         rotate: -9, className: 'top-[7%]     left-[3%]  w-32 lg:w-44', hideOnMobile: false },
+  { src: asset('assets/img/Stickers/Wow.svg'),                rotate:  7, className: 'top-[4%]     right-[4%] w-36 lg:w-52', hideOnMobile: false },
+  { src: asset('assets/img/Stickers/Viajo Luego Existo.svg'), rotate: -6, className: 'top-[55%]    left-[1%]  w-28 lg:w-40', hideOnMobile: true  },
+  { src: asset('assets/img/Stickers/I Love Magic.svg'),       rotate: 10, className: 'top-[70%]    right-[1%] w-28 lg:w-36', hideOnMobile: true  },
+  { src: asset('assets/img/Stickers/Hacks.svg'),              rotate: 12, className: 'bottom-[10%] left-[5%]  w-24 lg:w-32', hideOnMobile: true  },
+  { src: asset('assets/img/Stickers/No Muggles Allowed.svg'), rotate: -5, className: 'bottom-[8%]  right-[5%] w-28 lg:w-36', hideOnMobile: true  },
 ]
 
 /* ── Proceso: 5 pasos ─────────────────────────────────────────────── */
@@ -268,7 +269,7 @@ export default function Hero() {
                         pt-28 pb-10 lg:pt-0 lg:pb-0 text-left">
 
           <motion.img
-            src="/assets/img/Logos/PNG/EPDV TRAVEL PLANNERS AZUL.png"
+            src={asset('assets/img/Logos/PNG/EPDV TRAVEL PLANNERS AZUL.png')}
             alt="En Plan de Viajes — Travel Planners"
             className="w-52 sm:w-64 lg:w-80 mb-7 lg:mb-9"
             variants={logoAnim}
