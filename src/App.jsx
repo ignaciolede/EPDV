@@ -5,7 +5,7 @@ import NotFoundPage from './pages/NotFoundPage'
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/EPDV">
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
