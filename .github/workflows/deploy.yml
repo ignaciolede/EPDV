@@ -35,12 +35,6 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Copy static assets to dist
-        run: |
-          mkdir -p dist/assets
-          cp -r assets/img dist/assets/
-          cp -r assets/fonts dist/assets/
-
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
