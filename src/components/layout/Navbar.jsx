@@ -50,7 +50,6 @@ const NAV_LINKS = [
   },
   { label: 'Nosotros',  href: '/#nosotros' },
   { label: 'Novedades', href: '/#novedades' },
-  { label: 'Ofertas',   href: '/#ofertas'  },
   { label: 'Contacto',  href: '/#contacto' },
 ]
 

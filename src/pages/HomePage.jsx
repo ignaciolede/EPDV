@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { asset } from '../utils/asset'
 import Hero from '../components/sections/Hero'
 import Destinos from '../components/sections/Destinos'
+import Novedades from '../components/sections/Novedades'
 import ScrollReveal from '../components/ui/ScrollReveal'
 import StickerPop from '../components/ui/StickerPop'
 
@@ -22,8 +23,8 @@ export default function HomePage() {
           ══════════════════════════════════════════════════════════════ */}
       <section
         id="nosotros"
-        className="relative z-10 -mt-10 lg:-mt-24 rounded-t-[2rem]
-                   bg-brand-parchment pt-16 lg:pt-28 pb-section"
+        className="relative z-10 mt-4 lg:mt-0 rounded-t-[2rem]
+                   bg-brand-parchment pt-section pb-section"
       >
         <StickerPop src={asset('assets/img/Stickers/Vero y Diego.svg')}         rotate={-8}  delay={0}    className="top-20 left-[3%]  w-24 lg:w-32 hidden lg:block" />
         <StickerPop src={asset('assets/img/Stickers/nuestro-tip-favorito.svg')} rotate={7}   delay={0.15} className="bottom-20 right-[3%] w-28 lg:w-36 hidden lg:block" />
@@ -36,8 +37,8 @@ export default function HomePage() {
                 Esto evita los bugs de cross-reference que ocurren cuando el
                 clipPath está en un <svg> oculto separado.
                 Para cambiar la foto: editá el atributo href de <image>. */}
-            <ScrollReveal>
-              <div className="flex justify-center lg:justify-start">
+            <ScrollReveal className="lg:order-2">
+              <div className="flex justify-center lg:justify-end">
                 <svg
                   viewBox="0 0 666.3 748"
                   className="w-72 sm:w-80 lg:w-[440px] h-auto"
@@ -63,7 +64,7 @@ export default function HomePage() {
             </ScrollReveal>
 
             {/* ── Texto ── */}
-            <ScrollReveal delay={180} className="h-full">
+            <ScrollReveal delay={180} className="h-full lg:order-1">
               <div className="h-full flex flex-col justify-center">
                 <div className="space-y-5">
                   <p className="sticker">Quiénes somos</p>
@@ -93,78 +94,13 @@ export default function HomePage() {
           ══════════════════════════════════════════════════════════════ */}
       <Destinos />
 
-      {/* ══════════════════════════════════════════════════════════════
-          SERVICIOS — Parchment, sin cambio de fondo
-          ══════════════════════════════════════════════════════════════ */}
-      <section id="servicios" className="relative py-section">
-        <StickerPop src={asset('assets/img/Stickers/Logo Circular.svg')} rotate={5}   delay={0}    className="top-[22%]  left-[3%]  w-20 lg:w-28 hidden lg:block" />
-        <StickerPop src={asset('assets/img/Stickers/Aprobado.svg')}      rotate={-11} delay={0.15} className="bottom-10  right-[2%] w-24 lg:w-32 hidden lg:block" />
-        <div className="section-container text-center">
-          <ScrollReveal>
-            <p className="sticker mb-4">Lo que hacemos</p>
-            <h2 className="section-title text-balance">NUESTROS SERVICIOS</h2>
-            <p className="font-body text-base text-brand-blue-dark/70 mt-6 max-w-xl mx-auto">
-              Planificación personalizada, asesoramiento experto y acompañamiento
-              en cada paso de tu viaje.
-            </p>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════════
-          NOVEDADES — Card blanca elevada, no bloque a pantalla completa
-          ══════════════════════════════════════════════════════════════ */}
-      <section id="novedades" className="relative pb-section">
-        <StickerPop src={asset('assets/img/Stickers/Veranos en Disney.svg')}   rotate={9}   delay={0}    className="top-8     left-[2%]  w-24 lg:w-32 hidden lg:block" />
-        <StickerPop src={asset('assets/img/Stickers/Nos Vimos En Disney.svg')} rotate={-7}  delay={0.15} className="bottom-12  right-[1%] w-24 lg:w-32 hidden lg:block" />
-        <div className="section-container">
-          <ScrollReveal>
-            <div className="bg-white rounded-3xl shadow-card px-8 py-16 text-center">
-              <p className="sticker-blue mb-4">Inspiración</p>
-              <h2 className="section-title">NOVEDADES</h2>
-              <p className="font-body text-base text-brand-blue-dark/70 mt-6 max-w-xl mx-auto">
-                Consejos, guías y experiencias para que tu próximo viaje sea inolvidable.
-              </p>
-              <Link to="/novedades" className="btn-primary mt-8 inline-flex">
-                Ver todas las novedades
-              </Link>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════════
-          OFERTAS — Parchment base, sin bloque contrastante
-          ══════════════════════════════════════════════════════════════ */}
-      <section id="ofertas" className="relative pb-section">
-        <StickerPop src={asset('assets/img/Stickers/superpower.svg')}   rotate={-8} delay={0}    className="top-[18%] left-[3%]  w-24 lg:w-32 hidden lg:block" />
-        <StickerPop src={asset('assets/img/Stickers/fan-numero-1.svg')} rotate={6}  delay={0.15} className="top-8    right-[2%] w-24 lg:w-32 hidden lg:block" />
-        <div className="section-container text-center">
-          <ScrollReveal>
-            <p className="sticker mb-4">Tiempo limitado</p>
-            <h2 className="section-title">OFERTAS</h2>
-            <p className="font-body text-base text-brand-blue-dark/70 mt-6 max-w-xl mx-auto">
-              Las mejores promociones seleccionadas para que tu viaje soñado
-              esté al alcance de tu mano.
-            </p>
-            <button
-              onClick={() => {
-                const el = document.getElementById('contacto')
-                if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' })
-              }}
-              className="btn-coral mt-8 inline-flex"
-            >
-              Consultar oferta
-            </button>
-          </ScrollReveal>
-        </div>
-      </section>
+      <Novedades />
 
       {/* ══════════════════════════════════════════════════════════════
           CONTACTO — Card flotante con gradiente de marca
           Separado del fondo parchment por márgenes y rounded-3xl.
           ══════════════════════════════════════════════════════════════ */}
-      <section id="contacto" className="relative pb-10">
+      <section id="contacto" className="relative pb-section">
         <StickerPop src={asset('assets/img/Stickers/Wow.svg')} rotate={-6} delay={0.1} className="top-6 left-[2%] w-20 lg:w-28 hidden lg:block" />
         <div className="section-container">
           <ScrollReveal>
