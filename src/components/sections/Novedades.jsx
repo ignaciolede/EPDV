@@ -17,8 +17,10 @@ function cleanCaption(raw = '') {
 
 /* ── Card de post ─────────────────────────────────────────────── */
 function PostCard({ post, className = '' }) {
-  const image = post.media_type === 'VIDEO' ? post.thumbnail_url : post.media_url
-  const caption = cleanCaption(post.caption)
+  const image = post.mediaType === 'VIDEO'
+    ? post.thumbnailUrl
+    : (post.sizes?.large?.url || post.mediaUrl)
+  const caption = post.prunedCaption || cleanCaption(post.caption || '')
 
   return (
     <a
