@@ -9,7 +9,7 @@ export function useInstagramFeed() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('/data/instagram-feed.json')
+    fetch(`${import.meta.env.BASE_URL}data/instagram-feed.json`)
       .then(r => r.json())
       .then(data => setPosts(Array.isArray(data) ? data : []))
       .catch(() => setPosts([]))
