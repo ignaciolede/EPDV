@@ -3,6 +3,7 @@ import { asset } from '../utils/asset'
 import Hero from '../components/sections/Hero'
 import Destinos from '../components/sections/Destinos'
 import Novedades from '../components/sections/Novedades'
+import Testimonios from '../components/sections/Testimonios'
 import ScrollReveal from '../components/ui/ScrollReveal'
 import StickerPop from '../components/ui/StickerPop'
 
@@ -26,8 +27,9 @@ export default function HomePage() {
         className="relative z-10 mt-4 lg:mt-0 rounded-t-[2rem]
                    bg-brand-parchment pt-section pb-section"
       >
-        <StickerPop src={asset('assets/img/Stickers/Vero y Diego.svg')}         rotate={-8}  delay={0}    className="top-20 left-[3%]  w-24 lg:w-32 hidden lg:block" />
-        <StickerPop src={asset('assets/img/Stickers/nuestro-tip-favorito.svg')} rotate={7}   delay={0.15} className="bottom-20 right-[3%] w-28 lg:w-36 hidden lg:block" />
+        <StickerPop src={asset('assets/img/Stickers/Vero y Diego.svg')}         rotate={-8}  delay={0}    className="top-20      left-[3%]  w-24 lg:w-32 hidden lg:block" />
+        <StickerPop src={asset('assets/img/Stickers/superpower.svg')}           rotate={-12} delay={0.2}  className="top-1/3     right-[2%] w-20 lg:w-28 hidden lg:block" />
+        <StickerPop src={asset('assets/img/Stickers/nuestro-tip-favorito.svg')} rotate={7}   delay={0.15} className="bottom-20   right-[3%] w-28 lg:w-36 hidden lg:block" />
 
         <div className="section-container">
           <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:items-stretch">
@@ -96,12 +98,15 @@ export default function HomePage() {
 
       <Novedades />
 
+      <Testimonios />
+
       {/* ══════════════════════════════════════════════════════════════
           CONTACTO — Card flotante con gradiente de marca
           Separado del fondo parchment por márgenes y rounded-3xl.
           ══════════════════════════════════════════════════════════════ */}
       <section id="contacto" className="relative pb-section">
-        <StickerPop src={asset('assets/img/Stickers/Wow.svg')} rotate={-6} delay={0.1} className="top-6 left-[2%] w-20 lg:w-28 hidden lg:block" />
+        <StickerPop src={asset('assets/img/Stickers/Wow.svg')}         rotate={-6}  delay={0.1}  className="top-6     left-[2%]  w-20 lg:w-28 hidden lg:block" />
+        <StickerPop src={asset('assets/img/Stickers/fan-numero-1.svg')} rotate={-9}  delay={0.2}  className="bottom-8  right-[3%] w-20 lg:w-28 hidden lg:block" />
         <div className="section-container">
           <ScrollReveal>
             <div className="bg-gradient-brand rounded-3xl px-8 py-16 text-center shadow-card-lg">

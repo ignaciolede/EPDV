@@ -81,7 +81,9 @@ export default function Novedades() {
 
   return (
     <section id="novedades" className="relative pb-section">
-      <StickerPop src={asset('assets/img/Stickers/Veranos en Disney.svg')}   rotate={9}   delay={0}    className="top-8     left-[2%]  w-24 lg:w-32 hidden lg:block" />
+      <StickerPop src={asset('assets/img/Stickers/Veranos en Disney.svg')}   rotate={9}   delay={0}    className="top-8      left-[2%]  w-24 lg:w-32 hidden lg:block" />
+      <StickerPop src={asset('assets/img/Stickers/No Muggles Allowed.svg')}  rotate={12}  delay={0.1}  className="top-[48%]  right-[2%] w-24 lg:w-32 hidden lg:block" />
+      <StickerPop src={asset('assets/img/Stickers/Hacks.svg')}               rotate={-14} delay={0.2}  className="bottom-10  left-[2%]  w-20 lg:w-28 hidden lg:block" />
       <StickerPop src={asset('assets/img/Stickers/Nos Vimos En Disney.svg')} rotate={-7}  delay={0.15} className="bottom-12  right-[1%] w-24 lg:w-32 hidden lg:block" />
 
       <div className="section-container">

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { asset } from '../../utils/asset'
+import StickerPop from '../ui/StickerPop'
 
 const FOOTER_LINKS = [
   { label: 'Nosotros',  href: '/#nosotros'  },
@@ -21,8 +22,10 @@ export default function Footer() {
   return (
     <footer
       role="contentinfo"
-      className="bg-brand-blue-dark text-white"
+      className="bg-brand-blue-dark text-white relative overflow-hidden"
     >
+      <StickerPop src={asset('assets/img/Stickers/Viajo Luego Existo.svg')} rotate={-10} delay={0}    opacity={0.6} className="top-[20%] left-[1%]  w-24 lg:w-32 hidden lg:block" />
+      <StickerPop src={asset('assets/img/Stickers/Modo Avion.svg')}         rotate={8}   delay={0.15} opacity={0.6} className="top-[15%] right-[1%] w-24 lg:w-32 hidden lg:block" />
       <div className="section-container py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
 

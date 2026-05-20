@@ -1,5 +1,5 @@
 import { motion, useAnimation } from 'framer-motion'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { asset } from '../../utils/asset'
 
 /* ── Path del mapa (forma de marco para fotos) ───────────────────── */
@@ -7,21 +7,27 @@ const MAP_OUTER = 'M1029.28,195.95l-165.36,83.91c-18.01,9.14-39.3,9.14-57.31,0l-
 const MAP_STAR  = 'M924.33,666.66c-119.6,36.13-167.79,84.32-203.92,203.92-8.45,27.97-47.82,27.97-56.27,0-36.13-119.6-84.32-167.79-203.92-203.92-27.97-8.45-27.97-47.82,0-56.27,119.6-36.13,167.79-84.32,203.92-203.92,8.45-27.97,47.82-27.97,56.27,0,36.13,119.6,84.32,167.79,203.92,203.92,27.97,8.45,27.97,47.82,0,56.27Z'
 
 const MAP_PHOTOS = [
-  asset('assets/img/Parques/Magic Kingdom.png'),
-  asset('assets/img/Parques/Epcot.png'),
-  asset('assets/img/Parques/Hollywood Studios.png'),
-  asset('assets/img/Parques/New York.png'),
-  asset('assets/img/Parques/Crucero.png'),
+  { src: asset('assets/img/photo-magic-kingdom.jpeg'),       anchor: 'xMidYMid slice', origin: '50% 50%', kbTo: 'scale(1.08) translateY(-18px)' },
+  { src: asset('assets/img/photo-expedition-everest.jpeg'),  anchor: 'xMidYMin slice', origin: '50% 28%', kbTo: 'scale(1.07)'                    },
+  { src: asset('assets/img/photo-toy-story-land.jpeg'),      anchor: 'xMidYMid slice', origin: '44% 56%', kbTo: 'scale(1.08) translateX(-14px)'  },
+  { src: asset('assets/img/photo-super-nintendo-world.jpg'), anchor: 'xMidYMax slice', origin: '50% 66%', kbTo: 'scale(1.07) translateY(-12px)'  },
+  { src: asset('assets/img/photo-hogwarts-express.jpg'),     anchor: 'xMidYMid slice', origin: '50% 42%', kbTo: 'scale(1.09) translateY(-10px)'  },
 ]
 
 /* ── Stickers decorativos del fondo ───────────────────────────────── */
 const STICKERS = [
-  { src: asset('assets/img/Stickers/Modo Avion.svg'),         rotate: -9, className: 'top-[7%]     left-[3%]   w-32 lg:w-44', hideOnMobile: false },
-  { src: asset('assets/img/Stickers/Wow.svg'),                rotate:  7, className: 'top-[4%]     right-[4%]  w-36 lg:w-52', hideOnMobile: false },
-  { src: asset('assets/img/Stickers/Viajo Luego Existo.svg'), rotate: -6, className: 'top-[55%]    -left-[2%]  w-28 lg:w-40', hideOnMobile: true  },
-  { src: asset('assets/img/Stickers/I Love Magic.svg'),       rotate: 10, className: 'top-[68%]    -right-[1%] w-28 lg:w-36', hideOnMobile: true  },
-  { src: asset('assets/img/Stickers/Hacks.svg'),              rotate: 12, className: 'bottom-[8%]  left-[1%]   w-24 lg:w-32', hideOnMobile: true  },
-  { src: asset('assets/img/Stickers/No Muggles Allowed.svg'), rotate: -5, className: 'bottom-[6%]  right-[1%]  w-28 lg:w-36', hideOnMobile: true  },
+  // Esquina top-left
+  { src: asset('assets/img/Stickers/Modo Avion.svg'),         rotate: -11, className: 'top-[5%]    left-[2%]    w-28 lg:w-40', hideOnMobile: false },
+  // Esquina top-right
+  { src: asset('assets/img/Stickers/Wow.svg'),                rotate:   8, className: 'top-[2%]    right-[1%]   w-36 lg:w-52', hideOnMobile: false },
+  // Mid-left — rellena el vacío entre el top y la zona de fotos
+  { src: asset('assets/img/Stickers/Viajo Luego Existo.svg'), rotate:  -8, className: 'top-[30%]   -left-[1%]   w-28 lg:w-40', hideOnMobile: true  },
+  // Mid-right — rellena el vacío grande entre Wow y la parte baja
+  { src: asset('assets/img/Stickers/I Love Magic.svg'),       rotate:  18, className: 'top-[21%]   -right-[1%]  w-24 lg:w-36', hideOnMobile: true  },
+  // Lower-right — debajo del centro, escalona con I Love Magic
+  { src: asset('assets/img/Stickers/No Muggles Allowed.svg'), rotate:  -6, className: 'bottom-[2%]  right-[0%]   w-28 lg:w-40', hideOnMobile: true  },
+  // Bottom-left — más subido y más adentro para no quedar pegado al borde
+  { src: asset('assets/img/Stickers/Hacks.svg'),              rotate:  14, className: 'bottom-[13%] left-[3%]   w-20 lg:w-32', hideOnMobile: true  },
 ]
 
 /* ── Proceso: 5 pasos ─────────────────────────────────────────────── */
@@ -145,16 +151,39 @@ const ArrowRight = () => (
 function MapPhotoDisplay() {
   const [current, setCurrent] = useState(0)
   const [prev,    setPrev]    = useState(null)
+  // Incrementa cada vez que una foto se vuelve activa → fuerza restart del @keyframes
+  const [activeCounts, setActiveCounts] = useState(() =>
+    MAP_PHOTOS.map((_, i) => (i === 0 ? 1 : 0))
+  )
+
+  const advance = useCallback((next) => {
+    setCurrent(cur => {
+      setPrev(cur)
+      setActiveCounts(counts => counts.map((c, i) => (i === next ? c + 1 : c)))
+      return next
+    })
+  }, [])
 
   useEffect(() => {
     const id = setInterval(() => {
-      setCurrent(i => {
-        setPrev(i)
-        return (i + 1) % MAP_PHOTOS.length
+      setCurrent(cur => {
+        const next = (cur + 1) % MAP_PHOTOS.length
+        setPrev(cur)
+        setActiveCounts(counts => counts.map((c, i) => (i === next ? c + 1 : c)))
+        return next
       })
-    }, 4200)
+    }, 3500)
     return () => clearInterval(id)
   }, [])
+
+  // CSS @keyframes dinámico: el nombre cambia con activeCounts → el browser reinicia
+  // la animación desde scale(1) cada vez que la foto se activa.
+  const kbCSS = MAP_PHOTOS.map((photo, i) => `
+    @keyframes kb-${i}-${activeCounts[i]} {
+      from { transform: scale(1);       transform-origin: ${photo.origin}; }
+      to   { transform: ${photo.kbTo}; transform-origin: ${photo.origin}; }
+    }
+  `).join('')
 
   return (
     <motion.div
@@ -163,6 +192,8 @@ function MapPhotoDisplay() {
       initial="hidden"
       animate="visible"
     >
+      <style>{kbCSS}</style>
+
       {/* Resplandor detrás */}
       <div className="absolute inset-[10%] bg-brand-blue/15 blur-3xl rounded-full pointer-events-none" />
 
@@ -175,33 +206,41 @@ function MapPhotoDisplay() {
           <clipPath id="map-photo-clip">
             <path d={MAP_OUTER} />
           </clipPath>
+          {/* Viñeta inferior para dar profundidad */}
+          <linearGradient id="photo-vignette" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="55%" stopColor="black" stopOpacity="0" />
+            <stop offset="100%" stopColor="black" stopOpacity="0.38" />
+          </linearGradient>
         </defs>
 
-        {/* Fotos: la anterior se desvanece, la actual entra con ken-burns */}
-        {MAP_PHOTOS.map((src, i) => {
-          const isActive = i === current
+        {MAP_PHOTOS.map((photo, i) => {
+          const isActive  = i === current
           const isLeaving = i === prev
           return (
-            <image
-              key={src}
-              href={src}
-              x="0" y="0"
-              width="1384.54" height="1277.06"
-              preserveAspectRatio="xMidYMid slice"
+            <motion.g
+              key={photo.src}
               clipPath="url(#map-photo-clip)"
-              style={{
-                opacity: isActive ? 1 : 0,
-                transform: isActive ? 'scale(1.07)' : 'scale(1)',
-                transformOrigin: '692px 638px',
-                transition: isActive
-                  ? 'opacity 1s ease-in-out, transform 5s ease-out'
-                  : isLeaving
-                    ? 'opacity 1s ease-in-out'
-                    : 'none',
-              }}
-            />
+              animate={{ opacity: isActive ? 1 : 0 }}
+              transition={{ duration: 1.2, ease: 'easeInOut' }}
+            >
+              <image
+                href={photo.src}
+                x="0" y="0"
+                width="1384.54" height="1277.06"
+                preserveAspectRatio={photo.anchor}
+                style={{
+                  animation:          (isActive || isLeaving) ? `kb-${i}-${activeCounts[i]} 8s ease-out forwards` : 'none',
+                  animationPlayState: isActive ? 'running' : 'paused',
+                  transformOrigin:    photo.origin,
+                  willChange:         'transform',
+                }}
+              />
+            </motion.g>
           )
         })}
+
+        {/* Viñeta sobre las fotos */}
+        <path d={MAP_OUTER} fill="url(#photo-vignette)" />
 
         {/* Borde exterior del mapa */}
         <path
@@ -214,10 +253,10 @@ function MapPhotoDisplay() {
 
       {/* Indicadores de foto */}
       <div className="flex justify-center gap-1.5 mt-3">
-        {MAP_PHOTOS.map((_, i) => (
+        {MAP_PHOTOS.map((photo, i) => (
           <button
-            key={i}
-            onClick={() => { setPrev(current); setCurrent(i) }}
+            key={photo.src}
+            onClick={() => advance(i)}
             aria-label={`Foto ${i + 1}`}
             className={[
               'rounded-full transition-all duration-300',
@@ -378,7 +417,7 @@ export default function Hero() {
 
         {/* LOGO TÍTULO — centrado en el espacio entre nav y contenido */}
         <motion.div
-          className="flex justify-center items-center py-5 lg:py-8"
+          className="flex justify-center items-center pt-0 pb-2 lg:pb-3"
           variants={logoAnim}
           initial="hidden"
           animate="visible"
@@ -386,17 +425,17 @@ export default function Hero() {
           <img
             src={asset('assets/img/Logos/SVG/EPDV HORIZONTAL CON MAPA AZUL.svg')}
             alt="En Plan de Viajes"
-            className="w-80 sm:w-[26rem] lg:w-[32rem] h-auto mx-auto"
+            className="w-88 sm:w-[29rem] lg:w-[37rem] h-auto mx-auto"
           />
         </motion.div>
 
         {/* FILA DE CONTENIDO ───────────────────────────────────────── */}
         {/* FILA DE CONTENIDO ───────────────────────────────────────── */}
-        <div className="flex flex-col lg:flex-row flex-1 items-stretch justify-center gap-8 lg:gap-16">
+        <div className="flex flex-col lg:flex-row flex-1 items-stretch justify-center gap-8 lg:gap-4">
 
         {/* COLUMNA IZQUIERDA — Foto + CTAs ────────────────────────── */}
         <div className="shrink-0 flex flex-col items-center justify-center
-                        pb-10 lg:pb-0 gap-6 lg:gap-8 lg:-translate-y-4">
+                        pb-10 lg:pb-0 gap-6 lg:gap-8 lg:-translate-y-12">
 
           {/* Máscara de mapa con fotos */}
           <MapPhotoDisplay />
@@ -447,7 +486,7 @@ export default function Hero() {
 
         {/* COLUMNA DERECHA — Tarjetas del proceso (fan scrapbook) ── */}
         <div className="shrink-0 flex flex-col justify-center
-                        pb-12 lg:pb-0">
+                        pb-12 lg:pb-0 lg:-translate-y-8">
 
           {/* Título de sección */}
           <h2 className="font-heading text-2xl lg:text-3xl xl:text-4xl uppercase

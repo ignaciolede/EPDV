@@ -109,7 +109,9 @@ export default function Destinos() {
 
   return (
     <section id="destinos" className="pb-section relative">
-      <StickerPop src={asset('assets/img/Stickers/home-disney.svg')}          rotate={10}  delay={0}    className="top-[10%]   left-[1%]  w-24 hidden lg:block" />
+      <StickerPop src={asset('assets/img/Stickers/home-disney.svg')}          rotate={10}  delay={0}    className="top-[10%]    left-[1%]  w-24 hidden lg:block" />
+      <StickerPop src={asset('assets/img/Stickers/Aprobado.svg')}             rotate={-11} delay={0.1}  className="top-[5%]     right-[2%] w-20 lg:w-28 hidden lg:block" />
+      <StickerPop src={asset('assets/img/Stickers/Logo Circular.svg')}        rotate={14}  delay={0.2}  className="bottom-[8%]  left-[2%]  w-16 lg:w-24 hidden lg:block" />
       <StickerPop src={asset('assets/img/Stickers/where-fans-come-true.svg')} rotate={-4}  delay={0.15} className="bottom-[15%] right-[1%] w-28 hidden lg:block" />
 
       <div className="section-container">

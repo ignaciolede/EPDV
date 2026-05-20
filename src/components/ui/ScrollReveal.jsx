@@ -1,43 +1,22 @@
-import { useEffect, useRef, useState } from 'react'
+import { motion } from 'framer-motion'
+import { useMemo } from 'react'
 
-/**
- * Envuelve cualquier elemento y lo anima al entrar al viewport.
- * Usa IntersectionObserver — no depende de librerías externas.
- *
- * Props:
- *   delay   (ms) — retraso de entrada, útil para stagger entre cards
- *   as      — tag HTML del wrapper (default: 'div')
- *   className — clases extra (posición, tamaño, etc.)
- */
 export default function ScrollReveal({ children, className = '', delay = 0, as: Tag = 'div' }) {
-  const ref = useRef(null)
-  const [visible, setVisible] = useState(false)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true)
-          io.unobserve(el)
-        }
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -32px 0px' }
-    )
-    io.observe(el)
-    return () => io.disconnect()
-  }, [])
+  const MotionTag = useMemo(() => motion(Tag), [Tag])
 
   return (
-    <Tag
-      ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
-      className={`transition-all duration-700 ease-out ${
-        visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-      } ${className}`}
+    <MotionTag
+      className={className}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '0px 0px -32px 0px' }}
+      transition={{
+        duration: 0.7,
+        ease: [0.22, 1, 0.36, 1],
+        delay: delay / 1000,
+      }}
     >
       {children}
-    </Tag>
+    </MotionTag>
   )
 }
